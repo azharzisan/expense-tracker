@@ -6,8 +6,11 @@ import CircleChart from "./components/CircleChart";
 function App() {
   return (
     <>
-      <nav className="w-full h-auto fixed top-0 z-10000 text-center p-4 bg-[#ffb3c1] text-[#590d22] text-4xl font-bold border-b-2 border-[#590d22]">
+      <nav className="w-full h-auto fixed top-0 z-10000 text-center p-4 bg-[#ffb3c1] text-[#590d22] text-4xl font-bold border-b-2 border-[#590d22] flex justify-center items-center gap-2">
         Expense Tracker
+        <span className="text-sm bg-[#590d22] text-[#fff0f3] font-normal py-0.5 px-2 rounded-xl">
+          BETA
+        </span>
       </nav>
       {/* section for total expenses */}
       <section className="w-full h-auto p-4 mt-18">
@@ -19,7 +22,7 @@ function App() {
             <p className="text-4xl text-[#fff0f3]">$76749.86</p>
           </div>
           {/* duration filter */}
-          <button className="w-auto h-full flex justify-center items-center gap-1 text-xl font-semibold text-[#800f2f] bg-[#ffccd5] pr-2 pl-3 py-3 rounded hover:bg-[#ff8fa3] cursor-pointer ">
+          <button className="w-auto h-full flex justify-center items-center gap-1 text-xl font-semibold text-[#800f2f] bg-[#ffccd5] pr-3 pl-4 py-3 rounded hover:bg-[#ff8fa3] cursor-pointer">
             Add <IoMdAdd className="text-2xl font-semibold hover:rotate-360" />
           </button>
         </div>
@@ -47,6 +50,10 @@ function App() {
               <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
                 This Month
               </button>
+            </div>
+            <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%]">
+              <p className="text-6xl text-[#a4133c]">7</p>
+              <p className="text-xl text-[#a4133c]">Types</p>
             </div>
             <CircleChart />
           </div>
