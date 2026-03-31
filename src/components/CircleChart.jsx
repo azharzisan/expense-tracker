@@ -21,8 +21,21 @@ const CircleChart = () => {
       }}
       options={{
         plugins: {
-          legend: {
-            display: false,
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#fff0f3",
+            titleColor: "#a4133c",
+            titleAlign: "center",
+            bodyColor: "#a4133c",
+            bodyAlign: "center",
+            displayColors: false,
+            padding: 12,
+            callbacks: {
+              label: (context) => {
+                const value = context.parsed;
+                return `Amount: $${value.toLocaleString()}`;
+              },
+            },
           },
         },
         responsive: true,

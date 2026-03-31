@@ -51,7 +51,7 @@ function App() {
                 This Month
               </button>
             </div>
-            <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%]">
+            <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
               <p className="text-6xl text-[#a4133c]">7</p>
               <p className="text-xl text-[#a4133c]">Types</p>
             </div>
