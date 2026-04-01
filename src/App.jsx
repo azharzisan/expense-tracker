@@ -4,6 +4,7 @@ import BarView from "./ui/BarView";
 import AddButton from "./components/AddButton";
 import Nav from "./ui/Nav";
 import TotalExpenses from "./ui/TotalExpenses";
+import TableView from "./ui/TableView";
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
       </section>
 
       <section className="w-full h-auto p-4">
-        <BarView />
+        <div className="w-full h-auto flex justify-center items-center gap-4"> 
         <TableView />
+        <BarView />
+        </div>
       </section>
 
       <section className="w-full h-auto p-4">
