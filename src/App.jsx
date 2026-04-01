@@ -7,6 +7,17 @@ import TotalExpenses from "./ui/TotalExpenses";
 import TableView from "./ui/TableView";
 
 function App() {
+  const expenseData = {
+    id: crypto.randomUUID(),
+    amount: expenseAmount,
+    type: expenseType,
+    date: expenseDate,
+  };
+
+  const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  const updatedExpenses = [...existingExpenses, expenseData]
+  localStorage.setItem("expenses", JSON.stringify(updatedExpenses))
+
   return (
     <>
       <Nav />
@@ -20,9 +31,9 @@ function App() {
       </section>
 
       <section className="w-full h-auto p-4">
-        <div className="w-full h-auto flex justify-center items-center gap-4"> 
-        <TableView />
-        <BarView />
+        <div className="w-full h-auto flex justify-center items-center gap-4">
+          <TableView />
+          <BarView />
         </div>
       </section>
 
