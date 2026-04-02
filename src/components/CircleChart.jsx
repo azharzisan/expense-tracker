@@ -6,7 +6,7 @@ const CircleChart = () => {
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
   const result = expenses.reduce((acc, item) => {
-    const existing = acc.find((i) => i.type == item.type);
+    const existing = acc.find((i) => i.type === item.type);
 
     if (existing) {
       existing.amount = Number(existing.amount) + Number(item.amount)
