@@ -16,8 +16,8 @@ const CircleChart = () => {
     return acc;
   }, []);
 
-  const labels = result.map((item) => item.type)
-  const amounts = result.map((item) => item.amount)
+  const labels = result.map((item) => item.type);
+  const amounts = result.map((item) => item.amount);
 
   return (
     <Doughnut

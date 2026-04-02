@@ -1,3 +1,25 @@
 /* * {
     background-color: rgba(0,0,0,0.2);
 } */
+
+.beta-gradient {
+    background: #ff758f;
+    background: -webkit-linear-gradient(to right, #800f2f, #c9184a, #ff8fa3, #c9184a);
+    background: linear-gradient(to right, #800f2f, #c9184a, #ff8fa3, #c9184a);
+    background-size: 200% 200%;
+    animation: gradient-flow 5s ease infinite;
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
