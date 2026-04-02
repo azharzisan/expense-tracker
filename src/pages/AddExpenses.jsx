@@ -24,7 +24,7 @@ const AddExpenses = () => {
     setTypeInputValue("");
   };
 
-  const typeID = existingTypes.map((item) => item.id)
+  const typeID = existingTypes.map((item) => item.id);
 
   const handleTypeFocus = () => {
     typeRef.current.value;
@@ -53,7 +53,10 @@ const AddExpenses = () => {
       <div className="w-full h-screen flex justify-center items-center gap-4 flex-col">
         <h1 className="text-xl font-bold text-[#a4133c]">Add Your Expenses</h1>
         <div className="w-auto h-auto flex flex-col justify-center items-center gap-1 rounded-xl bg-[#ffccd5] p-4">
-          <label htmlFor="" className="w-full text-sm text-left text-[#a4133c]">
+          <label
+            htmlFor="expenseAmount"
+            className="w-full text-sm text-left text-[#a4133c]"
+          >
             Amount
           </label>
           <input
@@ -71,6 +74,7 @@ const AddExpenses = () => {
             Type
           </label>
           <select
+            id="expenseType"
             ref={typeRef}
             onChange={handleTypeFocus}
             className="w-full border-2 border-[#a4133c] bg-[#fff0f3] p-2 rounded outline-none text-[#a4133c]"
@@ -114,7 +118,7 @@ const AddExpenses = () => {
           <input
             type="text"
             id="expenseAddTypes"
-            placeholder="Add a Type"
+            placeholder="Add an Expense Type"
             value={TypeInputValue}
             onChange={handleTypeInputValueFocus}
             className="w-full border-2 border-[#a4133c] bg-[#fff0f3] p-2 rounded outline-none text-[#a4133c] mt-3"
@@ -123,7 +127,7 @@ const AddExpenses = () => {
             onClick={handleAddTypeOptions}
             className="w-full p-2 bg-[#ff8fa3] hover:bg-[#ffb3c1] border border-[#800f2f] mt-1 rounded text-[#800f2f]"
           >
-            Add Types
+            Add Type
           </button>
         </div>
       </div>
