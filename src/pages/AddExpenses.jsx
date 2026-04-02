@@ -37,6 +37,7 @@ const AddExpenses = () => {
       id: crypto.randomUUID(),
       amount: amount,
       type: typeRef.current.value,
+      typeID: typeID[0],
       date: dateRef.current.value,
     };
 
