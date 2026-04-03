@@ -18,7 +18,7 @@ function App() {
       <Nav />
       {/* section for total expenses */}
       <section className="w-full h-auto p-4 mt-18">
-        <div className="w-full h-auto flex justify-between items-center rounded-xl bg-[#800f2f] py-2 px-4">
+        <div className="w-full h-auto flex justify-between items-center rounded-xl bg-[#800f2f] py-2 pl-4 pr-5">
           <TotalExpenses />
           {/* duration filter */}
           <AddButton />
