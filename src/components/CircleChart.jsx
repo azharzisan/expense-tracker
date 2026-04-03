@@ -2,7 +2,7 @@ import React from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 
-const CircleChart = () => {
+const CircleChart = ({btnStates}) => {
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
   const result = expenses.reduce((acc, item) => {
@@ -16,8 +16,8 @@ const CircleChart = () => {
     return acc;
   }, []);
 
-  const labels = result.map((item) => item.type);
-  const amounts = result.map((item) => item.amount);
+  const labelsThisDay = result.map((item) => item.type);
+  const amountsThisDay = result.map((item) => item.amount);
 
   return (
     <Doughnut
