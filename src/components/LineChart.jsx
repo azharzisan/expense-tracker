@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import { SearchContext } from "../context/context";
 
 const LineChart = () => {
+  const { labels, amounts } = useContext(SearchContext)
   const chartRef = useRef(null);
 
   const getGradient = (ctx, chartArea) => {
@@ -17,22 +19,6 @@ const LineChart = () => {
     gradient.addColorStop(1, "rgba(201, 24, 74, 0)"); // bottom - transparent
     return gradient;
   };
-
-  const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-  const result = expenses.reduce((acc, item) => {
-    const existing = acc.find((i) => i.type == item.type);
-
-    if (existing) {
-      existing.amount = Number(existing.amount) + Number(item.amount);
-    } else {
-      acc.push({ ...item });
-    }
-    return acc;
-  }, []);
-
-  const labels = result.map((item) => item.type);
-  const amounts = result.map((item) => item.amount);
 
   const data = {
     labels: labels,
@@ -77,6 +63,11 @@ const LineChart = () => {
       x: {
         grid: { display: false },
         border: { display: false },
+      },
+      y: {
+        ticks: {
+          precision: 0,
+        },
       },
     },
   };
