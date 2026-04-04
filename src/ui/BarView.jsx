@@ -6,15 +6,14 @@ import { GraphContext } from "../context/context";
 const BarView = () => {
   const [btnStates, setBtnStates] = useState("thisDay");
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
   const thisDay = Temporal.Now.plainDateISO().toString();
-
   const thisMonth = Temporal.Now.plainDateISO().month;
+  const thisYear = Temporal.Now.plainDateISO().year;
 
   return (
     <>
       <GraphContext.Provider
-        value={{ thisDay, thisMonth, btnStates }}
+        value={{ thisDay, thisMonth, btnStates, thisYear }}
       >
         <div className="w-full h-[300px] flex justify-center items-center relative">
           <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
