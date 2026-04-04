@@ -3,10 +3,10 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { GraphContext } from "../context/context";
 import { useContext } from "react";
+import { Temporal } from "@js-temporal/polyfill";
 
 const CircleChart = () => {
-  const { thisDay, thisMonth, btnStates } =
-    useContext(GraphContext);
+  const { thisDay, thisMonth, btnStates } = useContext(GraphContext);
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
   const merged = expenses.map((item) => {
@@ -22,7 +22,6 @@ const CircleChart = () => {
     }, []);
     return { date: item.date, entries: mergedEntries };
   });
-  // console.log(merged)
 
   const getWeekRange = (date = Temporal.Now.plainDateISO()) => {
     const startOfWeek = date.subtract({ days: date.dayOfWeek - 1 });
@@ -31,11 +30,15 @@ const CircleChart = () => {
   };
 
   const { startOfWeek, endOfWeek } = getWeekRange();
-  const weekFilter = merged.filter((item) => {
+  const weekFilter = expenses.filter((item) => {
+    if (!item.date) return false
     const itemDate = Temporal.PlainDate.from(item.date);
-    Temporal.PlainDate.compare(itemDate, startOfWeek) >= 0 &&
-      Temporal.PlainDate.compare(itemDate, endOfWeek) <= 0;
+    return (
+      Temporal.PlainDate.compare(itemDate, startOfWeek) >= 0 &&
+      Temporal.PlainDate.compare(itemDate, endOfWeek) <= 0
+    );
   });
+  console.log(weekFilter);
 
   let labels;
   let amounts;
@@ -46,9 +49,11 @@ const CircleChart = () => {
     amounts = merged
       .flatMap((item) => item.entries.filter(() => item.date === thisDay))
       .map((it) => it.amount);
-  } else if(btnStates === "thisWeek") {
-    labels = weekFilter.flatMap((item) => item.entries.filter((it) => it.type))
-    amounts = weekFilter.flatMap((item) => item.entries.filter((it) => it.amount))
+  } else if (btnStates === "thisWeek") {
+    labels = weekFilter.flatMap((item) => item.entries.map((it) => it.type));
+    amounts = weekFilter.flatMap((item) =>
+      item.entries.map((it) => it.amount),
+    );
   } else if (btnStates === "thisMonth") {
     labels = merged
       .flatMap((item) =>
@@ -68,7 +73,6 @@ const CircleChart = () => {
     labels = merged.flatMap((item) => item.entries.map((i) => i.type));
     amounts = merged.flatMap((item) => item.entries.map((i) => i.amount));
   }
-  console.log(labels, amounts);
 
   return (
     <Doughnut
