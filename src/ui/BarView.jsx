@@ -9,25 +9,12 @@ const BarView = () => {
 
   const thisDay = Temporal.Now.plainDateISO().toString();
 
-  const getWeekRange = (date = Temporal.Now.plainDateISO()) => {
-    const startOfWeek = date.subtract({ days: date.dayOfWeek - 1 });
-    const endOfWeek = date.add({ days: 7 - date.dayOfWeek });
-    return { startOfWeek, endOfWeek };
-  };
-
-  const { startOfWeek, endOfWeek } = getWeekRange();
-  const weekFilter = expenses.filter((item) => {
-    const itemDate = Temporal.PlainDate.from(item.date);
-    Temporal.PlainDate.compare(itemDate, startOfWeek) >= 0 &&
-      Temporal.PlainDate.compare(itemDate, endOfWeek) <= 0;
-  });
-
   const thisMonth = Temporal.Now.plainDateISO().month;
 
   return (
     <>
       <GraphContext.Provider
-        value={{ thisDay, thisMonth, btnStates, weekFilter }}
+        value={{ thisDay, thisMonth, btnStates }}
       >
         <div className="w-full h-[300px] flex justify-center items-center relative">
           <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
