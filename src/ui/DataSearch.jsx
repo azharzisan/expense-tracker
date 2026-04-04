@@ -13,7 +13,6 @@ const DataSearch = () => {
   };
   const handleEnter = () => {
     setBtnInput(search);
-    // setSearch("");
   };
 
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -51,7 +50,7 @@ const DataSearch = () => {
           </p>
           <div className="w-full flex justify-start items-center gap-2 pb-6">
             <input
-              value={search}
+              value={btnInput}
               onChange={handleSearchFocus}
               type="date"
               className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-2 bg-[#fff0f3] text-[#800f2f] outline-none"

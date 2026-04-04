@@ -16,7 +16,7 @@ const TotalExpenses = () => {
             Today
           </span>
         </h2>
-        <p className="text-4xl text-[#fff0f3]">${totalAmount}</p>
+        <p className="text-4xl text-[#fff0f3]">${todayExpenses.length === 0 ? '0' : totalAmount}</p>
       </div>
     </>
   );
