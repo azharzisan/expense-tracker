@@ -79,9 +79,9 @@ expense-tracker/
 
 ---
 
-## ⚡ Live View
+## ⚡ Try Out Now!
 
-[Expense Tracker](https://expense-tracker-azharzisan.vercel.app)
+[View Live App](https://expense-tracker-azharzisan.vercel.app)
 
 ---
 
