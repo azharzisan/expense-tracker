@@ -8,9 +8,8 @@ import TableView from "./ui/TableView";
 
 function App() {
   const handleClear = () => {
-   const updated = []
-   localStorage.setItem("expenses", JSON.stringify(updated))
-   localStorage.setItem("expenseType", JSON.stringify(updated))
+   localStorage.removeItem("expenses")
+   localStorage.removeItem("expenseType")
   }
 
   return (
